@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shops_app/screens/product_details_screen.dart';
+
+import './screens/product_overview_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,27 +12,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Shops App',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
+        accentColor: Colors.limeAccent,
+        fontFamily: 'Lato',
       ),
-      home: MyHomePage(title: 'Shops App'),
+      routes: {
+        ProductOverviewScreen.routeName: (ctx) => ProductOverviewScreen(),
+        ProductDetailsScreen.routeName: (ctx) => ProductDetailsScreen()
+      },
     );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  final String title;
-
-  MyHomePage({this.title});
-  
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
-      body: Center(
-        child: Text('Yay another journey begins!!'),
-        ),
-      );
   }
 }

@@ -1,0 +1,17 @@
+{
+  "editor.snippetSuggestions": "top",
+  "window.zoomLevel": 1,
+  "editor.formatOnSave": true, // choose true if you want to format on save.
+  "editor.formatOnPaste": true, // optional
+  "editor.wordWrap": "on",
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "Consolas, 'Courier New', monospace",
+  "editor.colorDecorators": true,
+  "prettier.printWidth": 200,
+  "prettier.proseWrap": "preserve",
+  "workbench.activityBar.visible": true, //optional
+  "editor.minimap.enabled": false, //optional
+  "workbench.statusBar.visible": true, //optional
+  "window.menuBarVisibility": "default", //optional
+  "workbench.colorTheme": "Default Dark+" //optional
+}

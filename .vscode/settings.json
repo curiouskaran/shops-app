@@ -13,5 +13,5 @@
   "editor.minimap.enabled": false, //optional
   "workbench.statusBar.visible": true, //optional
   "window.menuBarVisibility": "default", //optional
-  "workbench.colorTheme": "Default Dark+" //optional
+  "workbench.colorTheme": "Slack Theme Dark Mode" //optional
 }

@@ -26,7 +26,7 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dukkan'),
+        title: Text('Dukan'),
         actions: <Widget>[
           PopupMenuButton(
             icon: Icon(Icons.more_vert),

@@ -17,8 +17,8 @@ class AppDrawer extends StatelessWidget {
           Divider(),
           ListTile(
             leading: Icon(Icons.store),
-            title: Text('Dukkan'),
-            subtitle: Text('Aapki apni Dukkan'),
+            title: Text('Dukan'),
+            subtitle: Text('Aapki apni Dukan'),
             onTap: () {
               Navigator.of(context)
                   .pushReplacementNamed(ProductOverviewScreen.routeName);

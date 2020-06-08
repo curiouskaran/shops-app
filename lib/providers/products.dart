@@ -30,11 +30,13 @@ class Products with ChangeNotifier {
 
       extractedData.forEach((productId, productData) {
         loadedData.add(Product(
-            id: productId,
-            title: productData['title'],
-            description: productData['description'],
-            price: productData['price'],
-            imageUrl: productData['imageUrl']));
+          id: productId,
+          title: productData['title'],
+          description: productData['description'],
+          price: productData['price'],
+          imageUrl: productData['imageUrl'],
+          isFavourite: productData['isFavourite'],
+        ));
         _items = loadedData;
         notifyListeners();
       });

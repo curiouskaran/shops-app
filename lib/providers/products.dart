@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import './product.dart';
+import '../models/http_exception.dart';
 
 class Products with ChangeNotifier {
   List<Product> _items = [];
@@ -72,22 +73,37 @@ class Products with ChangeNotifier {
     });
   }
 
-  void updateProduct(String id, Product updatedProduct) {
+  Future<void> updateProduct(String id, Product updatedProduct) async {
     var productIndex = _items.indexWhere((product) => product.id == id);
     if (productIndex >= 0) {
+      final url = 'https://dukan-2092e.firebaseio.com/products/$id.json';
+      await http.patch(
+        url,
+        body: json.encode({
+          'title': updatedProduct.title,
+          'description': updatedProduct.description,
+          'price': updatedProduct.price,
+          'imageUrl': updatedProduct.imageUrl
+        }),
+      );
       _items[productIndex] = updatedProduct;
       notifyListeners();
     }
   }
 
-  void deleteProduct(String id) {
-    // var productIndex = _items.indexWhere((product) => product.id == id);
-    // if (productIndex >= 0) {
-    //   _items.removeAt(productIndex);
-    //   notifyListeners();
-    // }
-    _items.removeWhere((product) => product.id == id);
+  Future<void> deleteProduct(String id) async {
+    final url = 'https://dukan-2092e.firebaseio.com/products/$id.json';
+    final existingProductIndex = _items.indexWhere((prod) => prod.id == id);
+    var existingProduct = _items[existingProductIndex];
+    _items.removeAt(existingProductIndex);
     notifyListeners();
+    final response = await http.delete(url);
+    if (response.statusCode >= 400) {
+      _items.insert(existingProductIndex, existingProduct);
+      notifyListeners();
+      throw HttpException('Could not delete product.');
+    }
+    existingProduct = null;
   }
 
   // void showFavourites() {

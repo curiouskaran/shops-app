@@ -77,7 +77,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
     }
   }
 
-  void _saveForm() {
+  void _saveForm() async {
     bool _isValid = _form.currentState.validate();
     if (!_isValid) return;
     _form.currentState.save();
@@ -85,9 +85,8 @@ class _EditProductScreenState extends State<EditProductScreen> {
       _isLoading = true;
     });
     if (_editedProduct.id != null) {
-      Provider.of<Products>(context, listen: false)
+      await Provider.of<Products>(context, listen: false)
           .updateProduct(_editedProduct.id, _editedProduct);
-      Navigator.of(context).pop();
     } else {
       Provider.of<Products>(context, listen: false)
           .addProduct(_editedProduct)
@@ -105,12 +104,16 @@ class _EditProductScreenState extends State<EditProductScreen> {
                   ],
                 ));
       }).then((_) {
-        setState(() {
-          Navigator.of(context).pop();
-          _isLoading = false;
-        });
+        // setState(() {
+        //   Navigator.of(context).pop();
+        //   _isLoading = false;
+        // });
       });
     }
+    setState(() {
+      Navigator.of(context).pop();
+      _isLoading = false;
+    });
   }
 
   @override

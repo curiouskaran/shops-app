@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shops_app/screens/user_products_screen.dart';
 
 import './screens/product_overview_screen.dart';
 import './screens/product_details_screen.dart';
 import './screens/orders_screen.dart';
 import './screens/cart_screen.dart';
 import './screens/edit_product_screen.dart';
+import './screens/user_products_screen.dart';
+import './screens/auth_screen.dart';
 import './providers/products.dart';
 import './providers/cart.dart';
 import './providers/orders.dart';
@@ -30,13 +31,14 @@ class MyApp extends StatelessWidget {
           accentColor: Colors.limeAccent,
           fontFamily: 'Lato',
         ),
+        home: AuthScreen(),
         routes: {
-          ProductOverviewScreen.routeName: (ctx) => ProductOverviewScreen(),
+          // ProductOverviewScreen.routeName: (ctx) => ProductOverviewScreen(),
           ProductDetailsScreen.routeName: (ctx) => ProductDetailsScreen(),
           CartScreen.routeName: (ctx) => CartScreen(),
           OrdersScreen.routeName: (ctx) => OrdersScreen(),
           UserProductsScreen.routeName: (ctx) => UserProductsScreen(),
-          EditProductScreen.routeName: (ctx) => EditProductScreen()
+          EditProductScreen.routeName: (ctx) => EditProductScreen(),
         },
       ),
     );
